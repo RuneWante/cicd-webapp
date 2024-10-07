@@ -1,8 +1,8 @@
-import globals from "globals";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-import js from "@eslint/js";
-import { FlatCompat } from "@eslint/eslintrc";
+import globals from 'globals';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import js from '@eslint/js';
+import { FlatCompat } from '@eslint/eslintrc';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -12,7 +12,7 @@ const compat = new FlatCompat({
     allConfig: js.configs.all
 });
 
-export default [...compat.extends("eslint:recommended"), {
+export default [...compat.extends('eslint:recommended'), {
     languageOptions: {
         globals: {
             ...globals.node,
@@ -20,31 +20,31 @@ export default [...compat.extends("eslint:recommended"), {
         },
 
         ecmaVersion: 12,
-        sourceType: "module",
+        sourceType: 'module',
     },
 
     rules: {
-        indent: ["error", 2, {
+        indent: ['error', 2, {
             SwitchCase: 1,
         }],
 
-        "linebreak-style": ["error", "unix"],
-        quotes: ["error", "single"],
-        semi: ["error", "always"],
-        "comma-dangle": ["error", "always-multiline"],
-        "no-tabs": ["error"],
+        'linebreak-style': ['error', 'unix'],
+        quotes: ['error', 'single'],
+        semi: ['error', 'always'],
+        'comma-dangle': ['error', 'always-multiline'],
+        'no-tabs': ['error'],
 
-        "max-len": ["error", {
+        'max-len': ['error', {
             code: 120,
             tabWidth: 2,
         }],
 
-        "arrow-parens": ["error", "always"],
+        'arrow-parens': ['error', 'always'],
 
-        "brace-style": ["error", "1tbs", {
+        'brace-style': ['error', '1tbs', {
             allowSingleLine: false,
         }],
 
-        "no-inner-declarations": "off",
+        'no-inner-declarations': 'off',
     },
 }];

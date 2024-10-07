@@ -18,3 +18,18 @@ jobs:
         run: yarn install
       - name: run lint
         run: yarn lint
+build:
+    runs-on: ubuntu-latest
+    needs: lint 
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Build Docker Image
+        uses: docker/build-push-action@v3 
+        with:
+          context: . 
+          file: ./Dockerfile  
+          tags: runehogent/webapp:latest  
+          push: false  

@@ -1,0 +1,51 @@
+services:
+  webapp:
+    image: webapp
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./database:/app/database/
+    environment:
+      - MYSQL_URL=mysql://root:secret@database:3306/mydatabase
+      
+    depends_on:
+      database:
+        condition: service_healthy
+        restart: true
+    networks:
+      - app-network
+  database:
+    build: .
+    image: mysql
+    restart: always
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: secret 
+      MYSQL_DATABASE: mydatabase 
+      MYSQL_USER: user
+      # MYSQL_PASSWORD: password #
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 10s
+      retries: 10
+    volumes:
+      - mysql-data:/var/lib/mysql
+      # - ./init.sql:/docker-entrypoint-initdb.d/init.sql #command om de user de vereiste privileges te geven
+    networks:
+      - app-network
+  test:
+    image: webapp
+    command: yarn test
+    environment:
+      - API_URL=http://webapp:3000
+    depends_on:
+      - webapp
+    networks:
+      - app-network
+networks:
+  app-network:
+
+volumes:
+  mysql-data:

@@ -1,0 +1,11 @@
+services:
+  webapp:
+    image: webapp
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./database:/app/database/
+
+volumes:
+  webappDB:

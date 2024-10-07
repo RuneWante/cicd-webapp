@@ -9,7 +9,7 @@
   "scripts": {
     "start": "node src/index.js",
     "test": "mocha tests/animals.spec.js",
-    "lint": "eslint ."
+    "lint": "eslint . --config .eslintrc.json"
   },
   "dependencies": {
     "@fakerjs/animal": "^2.2.0",

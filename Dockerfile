@@ -15,6 +15,6 @@ RUN apk add --no-cache curl
 
 RUN yarn install --frozen-lockfile
 
-COPY ./webapp/ /app/
+COPY ./ /app/
 
 CMD ["yarn", "start"]

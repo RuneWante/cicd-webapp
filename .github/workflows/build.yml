@@ -23,6 +23,6 @@ jobs:
         uses: docker/build-push-action@v3 
         with:
           context: . 
-          file: ./Dockerfile  
+          file: ../../Dockerfile 
           tags: runehogent/webapp:latest  
           push: false  

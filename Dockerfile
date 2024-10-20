@@ -5,7 +5,7 @@ WORKDIR /app
 ENV NODE_VERSION 20.17.0
 
 EXPOSE 3000/tcp
-COPY ./webapp/package.json ./webapp/yarn.lock /app/
+COPY ./package.json ./yarn.lock /app/
 
 
 RUN apk update && apk add --no-cache yarn

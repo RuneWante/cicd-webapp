@@ -29,6 +29,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           #password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          
           password: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
 
       - name: Build and Push Docker Image

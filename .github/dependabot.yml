@@ -1,0 +1,9 @@
+version: 2
+updates:
+  # This block tells Dependabot to check for updates to GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/" # The root directory where your workflow files are located
+    schedule:
+      interval: "daily"
+    commit-message:
+      prefix: "dependancies"
